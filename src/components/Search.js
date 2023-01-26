@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import { useHistory, useNavigate } from 'react-router-dom';
+import { useHistory, useNavigate, Navigate } from 'react-router-dom';
 
 const Search = () => {
   const searchInputRef = useRef();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const onSearchHandler = (e) => {
     e.preventDefault();
@@ -13,7 +13,10 @@ const Search = () => {
     }
     const queryString = new URLSearchParams(query).toString();
 
-    history.push({ pathname: '/articles', search: queryString})
+    navigate({  //updated to RR v6 , in RR v5  history.push({ pathname: '/articles', search: queryString}) was used
+    pathname: '',
+    search: queryString,
+    });
   };
 
   return (
